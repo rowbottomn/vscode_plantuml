@@ -3,28 +3,28 @@
 - Add the extension to VSCode: PlantUML Previewer
 - Use this document to create .puml files for your class diagrams
 - use CTRL-P to see the image generated.
+- drag the image to the url bar in chrome to get an image you can download or save.
 ---
 Section| Topic | Author | Date
 |---|---|---|---
-1.0|[Purpose of the Tree Identification App](#1.0-purpose-of-the-tree-identification-app)|NR|02-20-23
-2.0|[Login Authentification](#2.0-login-authentification)| NR| 02-22-23
-3.0|[Storage of Tree Images](#3.0-storage-of-tree-images) |NR|02-25-23
-4.0|[Storage of Tree Traits and Tree Data](#4.0-storage-of-tree-traits-and-tree-data)| NR | 02-25-23|
-5.0|[Hosting of the App](#5.0-hosting-of-the-app) | NR | 02-18-23| 01-07-23
-6.0|[AODA Concerns](#6.0-aoda-concerns)|NR| 02-20-23 | 
+1.0|[The PlantUML VS Code Extension](#the-plantuml-vs-code-extension)|NR|03-02-23
+2.0|[Class Diagram Basics](#class-diagram-basics)| NR| 03-02-23
+3.0|[Relationships Between Classes](#relationships-between-classes) |NR|03-02-23
+4.0|[Class Diagram Extras](#class-diagram-extras)| NR | 03-02-23|
+5.0|[Getting Your Image](#gettting-the-image) | NR | 03-02-23
 
 
-# 1.0 Purpose of the Tree Identification App
+
+# 1.0 The PlantUML VS Code Extension
 <details>
   <summary>
-  * Design Need for the TreeID App 
-  * Why not Machine Learning?
-  * Basic Algorithm
+  * Setup in VS Code<br>
+  * File Setup<br>
+  * Getting the Preview
   </summary>
   
-  ### Design Need for the Tree ID App
-  The app design came out of a request from Six Nations Lifelong Learning for an app which would help Hodinoso:ni people that do not have access to the language and cultural resources to help them regain that knowledge.  Many Hodinoso:ni people due to the colonization process enacted by multiple levels of governments in the past do not have access to language and culture; either through forced adoptions, the residential school system or the disenfranchisement of educated men or woman that married off-reserve.  This app was then seen as a first step in the attempt to create tools to support language and cultural revitalization.  While initially the app had a much larger scope of doing many medicinal plants and to include more cultural information like stories and medicinal uses, the scope was cut back as we discovered we were missing many institutional pieces like how to properly gatekeep sensative cultural knowledge and language from inappropriate access and potential liability from people not using the app to properly identify medicines and food plants.  Trees with just language was chosen as a deep enough problem to allow to encounter the data souveignty issues while shallow enough to avoid liability problems.
-  A web app was chosen as it would allow students from STEAM Academy's PTECH (Pathways in Technology, Early College in High School) program to assist in the development of the program as they had a course in web development.  A web app also allows the app to run on virtually any smart device.  Lastly, a web app approach removes the need to have separate development for iOS and Android devices.
+  ### Setup in VS Code
+  Click on extensions in the VS Code sidebar
 
   ### Why Not Machine Learning?
   When first conceptualizing the app, there was a strong desire to explore using machine learning (ML) tools to build a ML model capable of recognizing the different plants and to use this for the purposes of identification.  After exploring the proper scope of the need described above, it became apparent that what was needed was a tool to help human intelligence to learn to properly identify the trees rather than an app which utilized machine intelligence to replace the human capability.
