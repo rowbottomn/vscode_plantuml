@@ -9,71 +9,123 @@ Section| Topic | Author | Date
 |---|---|---|---
 1.0|[The PlantUML VS Code Extension](#the-plantuml-vs-code-extension)|NR|03-02-23
 2.0|[Class Diagram Basics](#class-diagram-basics)| NR| 03-02-23
-3.0|[Relationships Between Classes](#relationships-between-classes) |NR|03-02-23
-4.0|[Class Diagram Extras](#class-diagram-extras)| NR | 03-02-23|
-5.0|[Getting Your Image](#gettting-the-image) | NR | 03-02-23
+3.0|[Relationships Between Classes](#relationships-between-classes) |NR|TODO
+4.0|[Class Diagram Extras](#class-diagram-extras)| NR | TODO
+5.0|[Getting Your Image](#getting-the-image) | NR | TODO
+6.0|[Example](#Example) | NR | TODO
 
 
-
-# 1.0 The PlantUML VS Code Extension
+# The PlantUML VS Code Extension
 <details>
   <summary>
+    Topics<br>
   * Setup in VS Code<br>
   * File Setup<br>
   * Getting the Preview
   </summary>
   
   ### Setup in VS Code
-  Click on extensions in the VS Code sidebar
+  1. Click on the extensions icon in the VS Code sidebar 
+  ![vscode extensions](images/vscode_extensions.png)
+  2. Search for "plantuml"
+  3. Install the PlantUML Previewer extension
+     
+  ### File Setup
+  All plantUML files must have the file extension ".puml"
+  ![puml file extension](images/puml_file_extension.png)
 
-  ### Why Not Machine Learning?
-  When first conceptualizing the app, there was a strong desire to explore using machine learning (ML) tools to build a ML model capable of recognizing the different plants and to use this for the purposes of identification.  After exploring the proper scope of the need described above, it became apparent that what was needed was a tool to help human intelligence to learn to properly identify the trees rather than an app which utilized machine intelligence to replace the human capability.
-
-  ### Basic Algorithm
-  So the "Guess Who" algorithm was developed where we give a selection of trees and a human uses their own senses to narrow down the possibily candidates.  Users select traits based on drop down lists for Leaves, Bark and Buds.  The gallery of candidates possess a large selection of images of each part which can be used to help the use make the determination based on comparisons. When they have isolated it down to only one choice: the user has identified their tree and will see the name of the tree in Cayuga and Mohawk.
+  ### Getting the Preview
+  With the puml file open, ctrl-p opens a new tab with an image of the preview included. Any errors will also be explained inside.
+  ![puml_preview](images/puml_preview.png)
   
 </details>
 
-# 2.0 Login Authentification
+# Class Diagram Basics
 <details>
   <summary>
-  * Firebase Email Authentification 
-  * Passing the Token
+    Topics<br>
+  * Starting the Class Diagram<br>
+  * Adding in Classes<br>
+  * Adding in Properties and Methods<br>
+  * Setting Scope Visibility
   </summary>
   
-  ### Firebase Email Authentification
-   The authentification is offloaded to Google Firebase Authentification Libraries. In its current form, the app does not have much need for authentification.  Basically, it is used to keep a unique identifier which could be used for tracking future id's.  However, it also serves as a testbed for building best practices for gatekeeping the cultural knowledge.  Only in the event that a person passes the authentification process, will they get access to the words, images and traits.
-   Multiple solutions for online storage were considered. Many indigenous language projects go 'dark' 
- after funds dry up.  A longlasting, free or nearly free solution was required.
- - W3Storage allows the app to store the tree data in FileCoin, a cryptocurrency that is 'mined' by providing storage.
- - Firebase from Google provides cheap, effective app storage for free if use is below a specifc threshold.  
+  ### Starting the Class Diagram
+ Plant UML can do more than just class diagrams and so we need to be able to tell it that we are making a class diagram and where it starts and ends.
+ ```puml
+@startuml
 
-  ### Passing the Token
-  Successful authentification will supply 3 sets of needed tokens/IDs: 
-  1. The Server uses a Firebase token to authenticate the user and supply the client with the other needed access IDs to access the actual images directly from Firebase Storage and the files from the W3Storage.
-  2. The W3Storage token for the tree list and the list of tree traits. The tree list is used to pull the images and make the tree slides.  The tree traits list is used to generate the drop down lists.
-  3. Firebase IDs are given to the client to allow access to the images stored for each tree.    
+@enduml
+```
+
+  ### Adding in Classes
+  Adding classes to your diagram is done almost like a variable declaration in any language.
+```puml
+@startuml
+ class Bank
+ class Coin
+@enduml
+``` 
+<strong>Note that classes can be delared together or grouped together with their properties and methods.</strong>
+
+### Adding in Properties and Methods
+Below are some samples of adding in properties.
+```puml
+@startuml
+ class Bank
+ class Coin
+ Bank : ArrayList<Coin> coins
+ Coin : denom : String
+ Coin : value : double
+@enduml
+```
+Adding methods is very similar.
+```puml
+ Bank : Bank()
+ Bank : getTotal():double
+ Bank : addCoin(Coin):void
+ Bank : emptyBank():ArrayList<Coin>
+ 
+ Coin : +Coin(denom)
+```
+<strong>Note the constructor as the first method above</strong>
+### Setting Scope Visibility
+Setting visibility comes from using the symbols you already know.
+![visibility images](images/visibility.png)
+These are added by placing the appropriate symbol infront of the method or property.
+
 </details>
 
-# 3.0 Storage of Tree Images
-<details>
-  <summary>
-  * Why Images are Needed
-  * Method of Image Collection
-  * Firebase Storage Usage
-  </summary>
-  
-  ### Why Images are Needed
-  In learning how to identify trees, there is a considerable amount of information that needs to be conveyed so it can happen reliabily.  Users will not know what doubly palmate means for instance.  The idea was that by offering a large sampling of images that features the parts of the tree being used to identify the trees, that it would allow users to get a general sense of what the traits mean and also what they look like at various times of the year and various stages of development.
+# Example
+Below is example code which features most of the features we will use in this class.
+```puml
+@startuml
+ 
+ skinparam classAttributeIconSize 0
+ 
+ 
+ abstract class AbstBank
+ class Bank
+ class Coin
 
-  ### Method of Image Collection
-  Images were collected via a web scraping program which searched for images from Google Image Search for each term (for example: *slippery elm bark*).  A machine learning model then removed images that seemed cartoonish 
- or that contained people or words that might indicate ownership. All other images were assumes to be available for non-commercial use.  No one assumes or indicates ownership of the images. 
-  ### Firebase Storage Usage
-  The images were uploaded to a Firebase Storage account. See image below:
-  ![Firebase Storage Files for Images](./docs/documentation_images/firebase_storage.png)
-  Images were stored separately by bark, buds or leaves for each tree. 
-  ![Firebase Storage Files for Images](./docs/documentation_images/firebase_storage1.png)
+ AbstBank <|-- Bank
+ Bank "1" o-- "*" Coin
+ 
+ AbstBank : {abstract}+getTotal():double
+ AbstBank : {abstract}+addCoin(Coin):void
+ AbstBank : {abstract}+emptyBank():ArrayList<Coin>
 
-</details>
+ Bank : -ArrayList<Coin> coins
+ Bank : Bank()
+ Bank : +getTotal():double
+ Bank : +addCoin(Coin):void
+ Bank : +emptyBank():ArrayList<Coin>
+ 
+ Coin : -denom : String
+ Coin : -value : double
+ Coin : +Coin(denom)
 
+@enduml
+```
+Which yields the below image.
+![example](images/example.png)
