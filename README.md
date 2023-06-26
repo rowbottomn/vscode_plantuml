@@ -127,5 +127,5 @@ Below is example code which features most of the features we will use in this cl
 
 @enduml
 ```
-Which yields the below image.
+Which yields the below image.<br>
 ![example](images/example.png)
